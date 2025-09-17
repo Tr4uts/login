@@ -1,0 +1,376 @@
+/* Configurações Globais e de Fundo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #101010;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Container Principal */
+.login-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Wrapper do Formulário */
+.form-wrapper {
+    position: relative;
+    z-index: 10;
+    background-color: transparent;
+    padding: 40px;
+    border-radius: 22px;
+    text-align: center;
+}
+
+/* Estilos comuns para as LINHAS de neon */
+.login-container::before,
+.login-container::after,
+.form-wrapper::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 450px;
+    background: transparent;
+    border: 3px solid;
+    border-radius: 60% 40% 70% 30% / 30% 60% 40% 70%;
+    pointer-events: none;
+    transition: box-shadow 0.1s ease-out;
+}
+
+/* Linha de Neon VERDE */
+.login-container::before {
+    border-color: #00ff00;
+    animation: giro-continuo 10s linear infinite,
+        forma-maleavel 10s ease-in-out infinite alternate;
+    animation-delay: 0.2s;
+}
+
+/* Linha de Neon VERMELHA */
+.login-container::after {
+    border-color: #ff0000;
+    animation: giro-continuo 15s linear infinite reverse,
+        forma-maleavel 12s ease-in-out infinite reverse;
+}
+
+/* Linha de Neon AMARELA */
+.form-wrapper::before {
+    border-color: #ffff00;
+    animation: giro-continuo 20s linear infinite,
+        forma-maleavel 8s ease-in-out infinite;
+}
+
+
+/* --- Definições dos @keyframes --- */
+
+@keyframes ciclo-de-cores {
+    from {
+        filter: hue-rotate(0deg);
+    }
+    to {
+        filter: hue-rotate(360deg);
+    }
+}
+
+@keyframes giro-continuo {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes simula-grave {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        box-shadow: 0 0 5px #00ff00;
+    }
+    5% {
+        transform: translate(-50%, -50%) scale(1.25) rotate(-10deg);
+        box-shadow: 0 0 25px #00ff00;
+    }
+    10%, 20% {
+        transform: translate(-50%, -50%) scale(1.1) translate(2px, -2px) rotate(20deg);
+        box-shadow: 0 0 10px #00ff00;
+    }
+    15%, 25% {
+        transform: translate(-50%, -50%) scale(1.1) translate(-2px, 2px) rotate(-5deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1) rotate(360deg);
+        box-shadow: 0 0 5px #00ff00;
+    }
+}
+
+@keyframes simula-medio {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1) rotate(-15deg);
+        opacity: 0.8;
+        box-shadow: 0 0 5px #ff0000;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.15) rotate(15deg);
+        opacity: 1;
+        box-shadow: 0 0 15px #ff0000;
+    }
+}
+
+@keyframes simula-agudo {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1) translate(0, 0) rotate(0deg);
+        box-shadow: 0 0 5px #ffff00;
+    }
+    10%, 30%, 50%, 60% {
+        box-shadow: 0 0 12px #ffff00;
+    }
+    20%, 40% {
+        box-shadow: 0 0 8px #ffff00;
+    }
+}
+
+@keyframes forma-maleavel {
+    0%, 100% {
+        border-radius: 60% 40% 70% 30% / 30% 60% 40% 70%;
+    }
+    25% {
+        border-radius: 30% 70% 50% 50% / 60% 30% 70% 40%;
+    }
+    50% {
+        border-radius: 70% 30% 30% 70% / 40% 70% 30% 60%;
+    }
+    75% {
+        border-radius: 40% 60% 80% 20% / 70% 40% 60% 30%;
+    }
+}
+
+/* Estilos do formulário */
+h1 {
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #fff;
+    mix-blend-mode: difference;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #2b2b2b;
+    border: 1px solid #444;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #ffff00;
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.4);
+}
+
+.input-group input.input-error {
+    border-color: #e74c3c; /* Vermelho para erro */
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.4);
+}
+
+.btn-signin {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background-image: linear-gradient(to right, #ff4b2b, #ff416c, #ff8c00);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.btn-signin:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(255, 65, 108, 0.3);
+}
+
+.bottom-links {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottom-links.centered {
+    justify-content: center;
+}
+
+.bottom-links a {
+    color: #FA8072;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.bottom-links a:hover {
+    color: #FFC0CB;
+}
+
+.error-message {
+    color: #ff416c;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: left;
+}
+
+/* --- SEÇÃO ATUALIZADA ---
+   Animações para uma aparição suave do medidor de força da senha. */
+
+/* Estilo INICIAL do container (escondido e sem espaço) */
+#senha-feedback-container {
+    background-color: #1c1c1c;
+    border: 1px solid #333;
+    border-radius: 8px;
+    text-align: left;
+    overflow: hidden; /* Essencial para o truque de max-height */
+
+    /* O TRUQUE PRINCIPAL: encolhe o elemento a zero para não ocupar espaço */
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    
+    /* Define a transição para todas as propriedades que mudam */
+    transition: all 0.4s ease-in-out;
+}
+
+/* Estilo do container quando a classe .visible for adicionada pelo JS */
+#senha-feedback-container.visible {
+    /* EXPANSÃO: Restaura as propriedades para o estado visível */
+    max-height: 300px; /* Um valor alto o suficiente para caber todo o conteúdo */
+    opacity: 1;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+#senha-barra-progresso {
+    width: 100%;
+    height: 8px;
+    background-color: #333;
+    border-radius: 4px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+
+#senha-barra-progresso-fill {
+    height: 100%;
+    width: 0;
+    background-color: #888;
+    border-radius: 4px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* --- SEÇÃO ATUALIZADA ---
+   Estilos dos critérios com efeito de desaparecimento ao serem concluídos. */
+
+#senha-criterios {
+    list-style: none;
+    font-size: 14px;
+    margin-top: 10px;
+    color: #888;
+}
+
+#senha-criterios li {
+    margin-bottom: 5px;
+    opacity: 0;
+    transform: translateX(-15px);
+    /* Define como o item se comporta em todas as transições */
+    transition: all 0.4s ease-in-out; 
+    /* Garante que o item mantenha sua altura para a animação inicial */
+    max-height: 20px; 
+}
+
+/* Estilo dos itens quando o container PAI estiver visível */
+#senha-feedback-container.visible #senha-criterios li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Atraso (delay) na transição de CADA ITEM para criar o efeito de cascata */
+#senha-feedback-container.visible #senha-criterios li:nth-child(1) { transition-delay: 0.1s; }
+#senha-feedback-container.visible #senha-criterios li:nth-child(2) { transition-delay: 0.15s; }
+#senha-feedback-container.visible #senha-criterios li:nth-child(3) { transition-delay: 0.2s; }
+#senha-feedback-container.visible #senha-criterios li:nth-child(4) { transition-delay: 0.25s; }
+#senha-feedback-container.visible #senha-criterios li:nth-child(5) { transition-delay: 0.3s; }
+
+/* --- A MÁGICA ACONTECE AQUI --- */
+
+/* 1. ESTADO DE SUCESSO: Fica verde e mostra o check. */
+#senha-criterios li.valid {
+    color: #2ecc71;
+}
+
+#senha-criterios li.valid::before {
+    content: '✔ ';
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* 2. ESTADO DE DESAPARECIMENTO: Encolhe e some após um pequeno atraso. */
+#senha-feedback-container.visible #senha-criterios li.valid {
+    /* Adicionamos um atraso de 0.5s ANTES de iniciar o desaparecimento */
+    transition-delay: 0.5s; 
+    
+    /* Propriedades que fazem o item desaparecer */
+    max-height: 0;
+    opacity: 0;
+    margin-bottom: 0;
+}
+
+
+/* Estilos para o ícone de mostrar/ocultar senha */
+.input-group.password-group {
+    position: relative;
+}
+
+.input-group.password-group input {
+    padding-right: 45px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 11px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.toggle-password svg {
+    width: 20px;
+    height: 20px;
+    fill: #888;
+    transition: fill 0.2s ease;
+}
+
+.toggle-password:hover svg {
+    fill: #fff;
+}
