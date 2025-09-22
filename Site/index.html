@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Emulator Frontend</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="profile-section">
+        <button id="profile-btn" class="profile-action-btn no-premium" title="Meu Perfil">
+            <svg class="user-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24"
+                height="24">
+                <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+        </button>
+
+        <div id="profile-dropdown" class="hidden">
+            <a href="#">Meu Perfil</a>
+            <a href="#">Configurações</a>
+            <a id="premium-link" href="#">
+                <span class="crown-icon-menu">👑</span> Planos
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#">Sair</a>
+        </div>
+    </div>
+
+    <header>
+        <h1>Retro Game Shelf</h1>
+        <p>Sua estante de jogos clássicos na web</p>
+
+        <div id="filter-bar">
+            <button class="filter-btn active" data-console="Todos">Todos</button>
+            <button class="filter-btn" data-console="GBA">GBA</button>
+            <button class="filter-btn" data-console="SNES">SNES</button>
+            <button class="filter-btn" data-console="Mega Drive">Mega Drive</button>
+        </div>
+    </header>
+
+    <main>
+        <div id="game-library" class="game-grid">
+        </div>
+    </main>
+
+    <div id="details-overlay" class="hidden">
+        <div id="details-container">
+            <button id="close-details-btn">&times;</button>
+            <div id="details-content">
+                <img id="details-cover" src="" alt="Capa do Jogo">
+                <div id="details-text">
+                    <h2 id="details-title"></h2>
+                    <p id="details-description"></p>
+                    <button id="details-play-btn">▶ Jogar Agora</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="emulator-overlay" class="hidden">
+        <div id="emulator-container">
+            <div id="emulator-header">
+                <span id="game-title"></span>
+                <button id="close-emulator-btn">&times;</button>
+            </div>
+            <canvas id="emulator-screen"></canvas>
+            <div id="emulator-controls-info">
+                <p>Controles: Setas (Direcional), Z (A), X (B), Enter (Start)</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
